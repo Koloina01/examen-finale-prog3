@@ -19,6 +19,7 @@ import com.examfinal.demo.repository
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class TimesheetService {
@@ -58,10 +59,7 @@ public class TimesheetService {
                                 week
                         );
 
-        return timesheetMapper
-                .toEntity(
-                        timesheet
-                );
+        return timesheetMapper.toResponse(timesheet);
     }
 
     public TimesheetResponse
@@ -84,10 +82,8 @@ public class TimesheetService {
                 week
         );
 
-        timesheet.setEntries(
-                input.getEntries()
-        );
-
+        timesheet.setEntries((List) input.getEntries());
+        
         timesheet.setStatus(
                 TimesheetStatus.SUBMITTED
         );
@@ -134,6 +130,6 @@ public class TimesheetService {
                 LocalDateTime.now()
         );
 
-        return Validation.toResponse(validation);
+        return validationMapper.toResponse(validation);
     }
 }
