@@ -7,13 +7,24 @@ public class Consultant {
     private int id;
     private String FirstName;
     private String LastName;
-    private Grade grade;
+    private LocalDate birthDate;
+    private String gender;
+    private String address;
+    private String phone;
+    private String email;
     private LocalDate hireDate;
+    private Grade grade;
 
-    public Consultant(int id, String firstName, String lastName, Grade grade, LocalDate hireDate) {
+    public Consultant(int id, String firstName, String lastName, LocalDate birthDate, String gender,
+                      String address, String phone, String email, LocalDate hireDate, Grade grade) {
         this.id = id;
         FirstName = firstName;
         LastName = lastName;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
         this.grade = grade;
         this.hireDate = hireDate;
     }
@@ -36,6 +47,37 @@ public class Consultant {
     public void setLastName(String lastName) {
         LastName = lastName;
     }
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     public Grade getGrade() {
         return grade;
     }
