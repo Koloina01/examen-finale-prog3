@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 public class Payment {
 
+    private String id;
     private Integer amount;
 
     private LocalDate paymentDate;
