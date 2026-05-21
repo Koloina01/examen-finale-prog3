@@ -13,30 +13,31 @@ import com.examfinal.demo.enums.TimesheetStatus;
 import com.examfinal.demo.mapper.TimesheetMapper;
 import com.examfinal.demo.mapper.ValidationMapper;
 
-import com.examfinal.demo.repository
-        .TimesheetRepository;
+import com.examfinal.demo.repository.TimesheetRepository;
+import com.examfinal.demo.repository.ValidationRepository;
 
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class TimesheetService {
 
-    private final TimesheetRepository
-            timesheetRepository;
+    private final TimesheetRepository timesheetRepository;
 
-    private final TimesheetMapper
-            timesheetMapper;
+    private final ValidationRepository validationRepository;
 
-    private final ValidationMapper
-            validationMapper;
+    private final TimesheetMapper timesheetMapper;
+
+    private final ValidationMapper validationMapper;
 
     public TimesheetService() {
 
         this.timesheetRepository =
                 new TimesheetRepository();
+
+        this.validationRepository =
+                new ValidationRepository();
 
         this.timesheetMapper =
                 new TimesheetMapper();
@@ -45,10 +46,8 @@ public class TimesheetService {
                 new ValidationMapper();
     }
 
-    public TimesheetResponse
-    getTimesheet(
+    public TimesheetResponse getTimesheet(
             String consultantId,
-
             String week
     ) {
 
@@ -59,15 +58,14 @@ public class TimesheetService {
                                 week
                         );
 
-        return timesheetMapper.toResponse(timesheet);
+        return timesheetMapper.toResponse(
+                timesheet
+        );
     }
 
-    public TimesheetResponse
-    putTimesheet(
+    public TimesheetResponse putTimesheet(
             String consultantId,
-
             String week,
-
             TimesheetInput input
     ) {
 
@@ -82,8 +80,10 @@ public class TimesheetService {
                 week
         );
 
-        timesheet.setEntries((List) input.getEntries());
-        
+        timesheet.setEntries(
+                input.getEntries()
+        );
+
         timesheet.setStatus(
                 TimesheetStatus.SUBMITTED
         );
@@ -98,18 +98,14 @@ public class TimesheetService {
                                 timesheet
                         );
 
-        return timesheetMapper
-                .toResponse(
-                        saved
-                );
+        return timesheetMapper.toResponse(
+                saved
+        );
     }
 
-    public ValidationResponse
-    validate(
+    public ValidationResponse validate(
             String consultantId,
-
             String week,
-
             ValidationInput input
     ) {
 
@@ -120,7 +116,7 @@ public class TimesheetService {
                 "VAL-001"
         );
 
-        validation.setOutcome(input.getOutcome().name());
+        validation.setOutcome(input.getOutcome());
 
         validation.setComment(
                 input.getComment()
@@ -130,6 +126,15 @@ public class TimesheetService {
                 LocalDateTime.now()
         );
 
-        return validationMapper.toResponse(validation);
+        Validation savedValidation =
+                validationRepository.save(
+                        consultantId,
+                        week,
+                        validation
+                );
+
+        return validationMapper.toResponse(
+                savedValidation
+        );
     }
 }
