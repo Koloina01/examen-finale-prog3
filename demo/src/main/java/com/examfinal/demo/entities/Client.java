@@ -3,11 +3,10 @@ package com.examfinal.demo.entities;
 public class Client {
 
     private String id;
-    private String name;
+    private String companyName;
     private String nif;
     private String sector;
     private String address;
-
     private String contactName;
     private String contactPhone;
     private String contactEmail;
@@ -19,7 +18,7 @@ public class Client {
                   String address, String contactName,
                   String contactPhone, String contactEmail) {
         this.id = id;
-        this.name = name;
+        this.companyName = name;
         this.nif = nif;
         this.sector = sector;
         this.address = address;
@@ -36,12 +35,12 @@ public class Client {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public String getNif() {
