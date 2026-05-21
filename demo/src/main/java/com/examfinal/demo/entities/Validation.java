@@ -2,11 +2,13 @@ package com.examfinal.demo.entities;
 
 import java.time.LocalDateTime;
 
+import com.examfinal.demo.enums.ValidationOutcome;
+
 public class Validation {
 
     private String id;
 
-    private String outcome;
+    private ValidationOutcome outcome;
 
     private String comment;
 
@@ -24,17 +26,9 @@ public class Validation {
     ) {
         this.id = id;
     }
-
-    public String getOutcome() {
+    public ValidationOutcome getOutcome() {
         return outcome;
     }
-
-    public void setOutcome(
-            String outcome
-    ) {
-        this.outcome = outcome;
-    }
-
     public String getComment() {
         return comment;
     }
