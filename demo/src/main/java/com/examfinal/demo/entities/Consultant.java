@@ -1,7 +1,7 @@
 package com.examfinal.demo.entities;
 
 import java.time.LocalDate;
-import com.examfinal.demo.enums.Grade;
+import com.examfinal.demo.enums.ConsultantGrade;
 
 public class Consultant {
     private int id;
@@ -13,10 +13,10 @@ public class Consultant {
     private String phone;
     private String email;
     private LocalDate hireDate;
-    private Grade grade;
+    private ConsultantGrade grade;
 
     public Consultant(int id, String firstName, String lastName, LocalDate birthDate, String gender,
-                      String address, String phone, String email, LocalDate hireDate, Grade grade) {
+                      String address, String phone, String email, LocalDate hireDate, ConsultantGrade grade) {
         this.id = id;
         FirstName = firstName;
         LastName = lastName;
@@ -78,10 +78,10 @@ public class Consultant {
         this.email = email;
     }
     
-    public Grade getGrade() {
+    public ConsultantGrade getGrade() {
         return grade;
     }
-    public void setGrade(Grade grade) {
+    public void setGrade(ConsultantGrade grade) {
         this.grade = grade;
     }
     public LocalDate getHireDate() {
