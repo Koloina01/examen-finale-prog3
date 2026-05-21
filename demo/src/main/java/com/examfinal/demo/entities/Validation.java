@@ -17,6 +17,18 @@ public class Validation {
     public Validation() {
     }
 
+    public Validation(
+            String id,
+            ValidationOutcome outcome,
+            String comment,
+            LocalDateTime validatedAt
+    ) {
+        this.id = id;
+        this.outcome = outcome;
+        this.comment = comment;
+        this.validatedAt = validatedAt;
+    }
+
     public String getId() {
         return id;
     }
@@ -28,6 +40,11 @@ public class Validation {
     }
     public ValidationOutcome getOutcome() {
         return outcome;
+    }
+    public void setOutcome(
+            ValidationOutcome outcome
+    ) {
+        this.outcome = outcome;
     }
     public String getComment() {
         return comment;
