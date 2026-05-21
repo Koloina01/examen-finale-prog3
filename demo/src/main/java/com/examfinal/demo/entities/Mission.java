@@ -1,20 +1,25 @@
 package com.examfinal.demo.entities;
 
+import com.examfinal.demo.enums.MissionStatus;
 import java.time.LocalDate;
 public class Mission {
     private int id;
     private String description;
     private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDate planneDate;
+    private LocalDate actualEndDate;
+    private MissionStatus status;
 
     public Mission() {
     }
     
-    public Mission(int id, String description, LocalDate startDate, LocalDate endDate) {
+    public Mission(int id, String description, LocalDate startDate, LocalDate plannedEndDate, LocalDate actualEndDate, MissionStatus status) {
         this.id = id;
         this.description = description;
         this.startDate = startDate;
-        this.endDate = endDate;
+        this.planneDate = plannedEndDate;
+        this.actualEndDate = actualEndDate;
+        this.status = status;
     }
 
     public int getId() {
@@ -41,11 +46,27 @@ public class Mission {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
+    public LocalDate getPlannedEndDate() {
+        return planneDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public void setPlannedEndDate(LocalDate plannedEndDate) {
+        this.planneDate = plannedEndDate;
+    }
+
+    public LocalDate getActualEndDate() {
+        return actualEndDate;
+    }
+
+    public void setActualEndDate(LocalDate actualEndDate) {
+        this.actualEndDate = actualEndDate;
+    }
+
+    public MissionStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(MissionStatus status) {
+        this.status = status;
     }
 }
