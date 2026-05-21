@@ -1,12 +1,12 @@
 package com.examfinal.demo.dto;
 
-import com.examfinal.demo.enums.Grade;
+import com.examfinal.demo.enums.ConsultantGrade;
 
 public class ConsultantResponse {
 
     private String id;
     private String name;
-    private Grade grade;
+    private ConsultantGrade grade;
 
     public ConsultantResponse() {
     }
@@ -14,7 +14,7 @@ public class ConsultantResponse {
     public ConsultantResponse(
             String id,
             String name,
-            Grade grade
+            ConsultantGrade grade
     ) {
         this.id = id;
         this.name = name;
@@ -37,11 +37,11 @@ public class ConsultantResponse {
         this.name = name;
     }
 
-    public Grade getGrade() {
+    public ConsultantGrade getGrade() {
         return grade;
     }
 
-    public void setGrade(Grade grade) {
+    public void setGrade(ConsultantGrade grade) {
         this.grade = grade;
     }
 }
